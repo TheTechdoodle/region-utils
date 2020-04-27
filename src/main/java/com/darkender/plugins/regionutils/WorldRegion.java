@@ -1,8 +1,5 @@
 package com.darkender.plugins.regionutils;
 
-import de.md5lukas.nbt.NbtIo;
-import de.md5lukas.nbt.tags.CompoundTag;
-
 import java.io.*;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
@@ -69,20 +66,6 @@ public class WorldRegion
         raf.readFully(data);
         
         return data;
-    }
-    
-    public CompoundTag getChunk(int sectorOffset, Inflater inflater) throws IOException
-    {
-        byte[] data = getChunkCompressedData(sectorOffset);
-        CompoundTag tag;
-        try(DataInputStream dis = new DataInputStream(
-                new InflaterInputStream(
-                        new ByteArrayInputStream(data),
-                        inflater)))
-        {
-            tag = NbtIo.read(dis);
-        }
-        return tag;
     }
     
     public int getChunkSize(int chunkX, int chunkZ) throws IOException

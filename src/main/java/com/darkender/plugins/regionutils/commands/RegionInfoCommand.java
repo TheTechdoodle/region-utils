@@ -2,7 +2,6 @@ package com.darkender.plugins.regionutils.commands;
 
 import com.darkender.plugins.regionutils.RegionUtils;
 import com.darkender.plugins.regionutils.WorldRegion;
-import de.md5lukas.nbt.tags.CompoundTag;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -15,12 +14,10 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class RegionInfoCommand implements CommandExecutor, TabCompleter
 {
@@ -75,18 +72,7 @@ public class RegionInfoCommand implements CommandExecutor, TabCompleter
         int relativeX = c.getX() % 32;
         int relativeZ = c.getZ() % 32;
         p.sendMessage(ChatColor.GOLD + "Current chunk offset: " + ChatColor.WHITE + region.getOffset(relativeX, relativeZ));
-    
-        try
-        {
-            CompoundTag root = region.getChunk(region.getOffset(relativeX, relativeZ), new Inflater());
-            CompoundTag level = root.getCompound("Level");
-        
-            p.sendMessage(ChatColor.GOLD + "Inhabited time: " + ChatColor.WHITE + level.getLong("InhabitedTime"));
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
+        p.sendMessage(ChatColor.GOLD + "Inhabited time: " + ChatColor.WHITE + c.getInhabitedTime());
     
         region.close();
     

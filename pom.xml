@@ -79,10 +79,6 @@
             <id>sk89-repo</id>
             <url>http://maven.sk89q.com/repo</url>
         </repository>
-        <repository>
-            <id>sytm-nexus</id>
-            <url>https://repo.sytm.de/repository/maven-hosted/</url>
-        </repository>
     </repositories>
 
     <dependencies>
@@ -103,12 +99,6 @@
             <artifactId>worldedit-bukkit</artifactId>
             <version>7.1.0</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.md5lukas</groupId>
-            <artifactId>nbt</artifactId>
-            <version>1.2.2</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
