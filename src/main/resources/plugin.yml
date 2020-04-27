@@ -1,5 +1,5 @@
 name: RegionUtils
-version: 1.0.0
+version: ${project.version}
 main: com.darkender.plugins.regionutils.RegionUtils
 author: Techdoodle
 description: A set of commands for working with regions
