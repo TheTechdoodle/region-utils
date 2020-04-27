@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RegionTPCommand implements CommandExecutor, TabCompleter
@@ -73,6 +74,19 @@ public class RegionTPCommand implements CommandExecutor, TabCompleter
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args)
     {
-        return empty;
+        if(args.length > 2 || !(sender instanceof Player))
+        {
+            return empty;
+        }
+        
+        Player p = (Player) sender;
+        if(args.length <= 1)
+        {
+            return Collections.singletonList(Integer.toString((int) Math.floor(p.getLocation().getChunk().getX() / 32.0)));
+        }
+        else
+        {
+            return Collections.singletonList(Integer.toString((int) Math.floor(p.getLocation().getChunk().getZ() / 32.0)));
+        }
     }
 }
