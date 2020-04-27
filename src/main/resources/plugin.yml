@@ -1,0 +1,43 @@
+name: RegionUtils
+version: 1.0.0
+main: com.darkender.plugins.regionutils.RegionUtils
+author: Techdoodle
+description: A set of commands for working with regions
+api-version: 1.15
+depend: [WorldEdit]
+commands:
+  rgpos:
+    description: Get your position relative to the region you are in
+    permission: regionutils.pos
+    aliases:
+      - regionpos
+      - regionposition
+      - rpos
+  rginfo:
+    description: Get information about the region you are in
+    permission: regionutils.info
+    aliases:
+      - regioninfo
+      - rinfo
+  rgtp:
+    description: Teleport to the center of the specified region or to the center of the current region if none is specified
+    permission: regionutils.tp
+    usage: "/rgtp x z"
+    aliases:
+      - regiontp
+      - regionteleport
+      - rtp
+  snappos:
+    description: Rounds the location to the nearest half block and nearest 90-degree view
+    permission: regionutils.snappos
+    aliases:
+      - possnap
+      - snapposition
+  pastecenter:
+    description: Pastes the current selection at the center of the current region
+    permission: regionutils.pastecenter
+    usage: "/pastecenter y"
+    aliases:
+      - /pastecenter
+      - centerpaste
+      - /centerpaste
