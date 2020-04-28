@@ -1,7 +1,7 @@
 package com.darkender.plugins.regionutils.commands;
 
+import com.darkender.plugins.regionapi.Region;
 import com.darkender.plugins.regionutils.RegionUtils;
-import com.darkender.plugins.regionutils.WorldRegion;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -14,6 +14,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
@@ -36,8 +37,16 @@ public class RegionInfoCommand implements CommandExecutor, TabCompleter
         Chunk c = p.getLocation().getChunk();
         File regionFile = RegionUtils.getRegionFile(p);
     
-        WorldRegion region = new WorldRegion(regionFile);
-        region.init();
+        Region region = null;
+        try
+        {
+            region = new Region(regionFile);
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+            return true;
+        }
     
         int loaded = 0;
         for(int x = 0; x < 32; x++)
@@ -74,7 +83,14 @@ public class RegionInfoCommand implements CommandExecutor, TabCompleter
         p.sendMessage(ChatColor.GOLD + "Current chunk offset: " + ChatColor.WHITE + region.getOffset(relativeX, relativeZ));
         p.sendMessage(ChatColor.GOLD + "Inhabited time: " + ChatColor.WHITE + c.getInhabitedTime());
     
-        region.close();
+        try
+        {
+            region.close();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
     
         return true;
     }

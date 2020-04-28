@@ -54,6 +54,10 @@
                         </goals>
                         <configuration>
                             <relocations>
+                                <relocation>
+                                    <pattern>com.darkender.plugins.regionapi</pattern>
+                                    <shadedPattern>com.darkender.plugins.regionutils.regionapi</shadedPattern>
+                                </relocation>
                             </relocations>
                             <filters>
                                 <filter>
@@ -79,6 +83,10 @@
             <id>sk89-repo</id>
             <url>http://maven.sk89q.com/repo</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -99,6 +107,12 @@
             <artifactId>worldedit-bukkit</artifactId>
             <version>7.1.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.TheTechdoodle</groupId>
+            <artifactId>region-api</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

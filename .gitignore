@@ -4,3 +4,6 @@
 
 # Build Files
 target/
+
+# Maven Files
+dependency-reduced-pom.xml
